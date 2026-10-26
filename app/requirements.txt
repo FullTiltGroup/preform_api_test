@@ -1,0 +1,1 @@
+formlabs-sdk @ git+https://github.com/Formlabs/formlabs-api-python

@@ -1,0 +1,32 @@
+services:
+  preform_server:
+    build:
+      context: .
+      dockerfile: docker/preform/Dockerfile
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:44388/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: --port 44388
+    container_name: preform-server
+    ports:
+      - 44388:44388
+    volumes:
+      - ./work:/work
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    environment:
+      - DISABLE_PREFORMSERVER_TELEMETRY=1
+
+  python:
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    depends_on:
+      preform_server:
+        condition: service_healthy
+
+
+networks: {}
