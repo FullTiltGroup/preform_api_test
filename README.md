@@ -1,4 +1,4 @@
-# Preform API Test
+# PreForm API Test
 
 ## About
 
@@ -15,6 +15,10 @@ enable a health check, the base formlabs/preform-server image is built using a
 Dockerfile to add the curl utility.
 
 ## Setup
+
+These instructions assume you have already installed
+[docker](https://docs.docker.com/engine/install/), docker compose, and 
+[git](https://git-scm.com/install/linux). 
 
 ```
 git clone https://github.com/FullTiltGroup/preform_api_test.git
